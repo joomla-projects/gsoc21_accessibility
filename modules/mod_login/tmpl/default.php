@@ -37,7 +37,7 @@ Text::script('JHIDEPASSWORD');
 				<div class="input-group">
 					<input id="modlgn-username-<?php echo $module->id; ?>" type="text" name="username" class="form-control" autocomplete="username" placeholder="<?php echo Text::_('MOD_LOGIN_VALUE_USERNAME'); ?>">
 					<label for="modlgn-username-<?php echo $module->id; ?>" class="visually-hidden"><?php echo Text::_('MOD_LOGIN_VALUE_USERNAME'); ?></label>
-					<span class="input-group-text" title="<?php echo Text::_('MOD_LOGIN_VALUE_USERNAME'); ?>">
+					<span class="input-group-text">
 						<span class="icon-user icon-fw" aria-hidden="true"></span>
 					</span>
 				</div>
