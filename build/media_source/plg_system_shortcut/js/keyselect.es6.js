@@ -17,15 +17,31 @@
 
   const keyUp = (e) => {
     if (e.keyCode >= 65 && e.keyCode <= 90) {
+      const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
       const pressedKeys = [];
+      if (e.metaKey) {
+        if (isMac) {
+          pressedKeys.push('CMD');
+        } else {
+          pressedKeys.push('CTRL');
+        }
+      }
       if (e.ctrlKey) {
-        pressedKeys.push('CTRL');
+        if (isMac) {
+          pressedKeys.push('CONTROL');
+        } else {
+          pressedKeys.push('CTRL');
+        }
       }
       if (e.shiftKey) {
         pressedKeys.push('SHIFT');
       }
-      if (navigator.platform.match('Mac') ? e.metaKey : e.altKey) {
-        pressedKeys.push('ALT');
+      if (e.altKey) {
+        if (isMac) {
+          pressedKeys.push('OPTION');
+        } else {
+          pressedKeys.push('ALT');
+        }
       }
 
       pressedKeys.push(e.key.toUpperCase());
@@ -81,7 +97,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${Joomla.Text._('PLG_SYSTEM_SHORTCUT_CANCEL')}</button>
-              <button type="button" class="btn btn-success" id="saveKeyCombination">${Joomla.Text._('PLG_SYSTEM_SHORTCUT_SAVE_CHANGES')}</button>
+              <button type="button" class="btn btn-success" id="saveKeyCombination">${Joomla.Text._('PLG_SYSTEM_SHORTCUT_SET_SHORTCUT')}</button>
             </div>
           </div>
         </div>
