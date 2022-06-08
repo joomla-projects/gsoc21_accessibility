@@ -9,14 +9,6 @@
 
   const keyDown = (e) => {
     if (e.keyCode >= 65 && e.keyCode <= 90) {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-    }
-  };
-
-  const keyUp = (e) => {
-    if (e.keyCode >= 65 && e.keyCode <= 90) {
       const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
       const pressedKeys = [];
       if (e.metaKey) {
@@ -108,7 +100,6 @@
     const keySelectModal = document.getElementById('keySelectModal');
 
     keySelectModal.addEventListener('keydown', keyDown, false);
-    keySelectModal.addEventListener('keyup', keyUp, false);
     keySelectModal.addEventListener('show.bs.modal', openModal, false);
     keySelectModal.addEventListener('hidden.bs.modal', closeDModal, false);
     const saveKeyCombination = document.getElementById('saveKeyCombination');
