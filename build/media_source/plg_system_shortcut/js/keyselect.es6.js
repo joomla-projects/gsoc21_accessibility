@@ -16,6 +16,14 @@
     }
   };
 
+  const keyUp = (e) => {
+    if (e.keyCode >= 65 && e.keyCode <= 90) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  };
+
   const keyDown = (e) => {
     // Please note that some combinations (CMD + N, CMD + W) can't be overwritten by JS: https://stackoverflow.com/a/38840000
     if (e.keyCode >= 65 && e.keyCode <= 90) {
@@ -101,6 +109,7 @@
     const keySelectModal = document.getElementById('keySelectModal');
 
     keySelectModal.addEventListener('keydown', keyDown, false);
+    keySelectModal.addEventListener('keyup', keyUp, false);
     keySelectModal.addEventListener('show.bs.modal', openModal, false);
     keySelectModal.addEventListener('hidden.bs.modal', closeDModal, false);
     const saveKeyCombination = document.getElementById('saveKeyCombination');
