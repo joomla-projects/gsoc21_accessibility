@@ -7,33 +7,34 @@
 
   let button = null;
 
+  const appendKeyForOs = (pressedKeys, windowsVersion, macOsVersion) => {
+    const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
+    if (isMac) {
+      pressedKeys.push(macOsVersion);
+    } else {
+      pressedKeys.push(windowsVersion);
+    }
+  };
+
   const keyDown = (e) => {
+    // Please note that some combinations (CMD + N, CMD + W) can't be overwritten by JS: https://stackoverflow.com/a/38840000
     if (e.keyCode >= 65 && e.keyCode <= 90) {
-      const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
       const pressedKeys = [];
       if (e.metaKey) {
-        if (isMac) {
-          pressedKeys.push('CMD');
-        } else {
-          pressedKeys.push('CTRL');
-        }
+        appendKeyForOs(pressedKeys, 'CTRL', 'CMD');
       }
       if (e.ctrlKey) {
-        if (isMac) {
-          pressedKeys.push('CONTROL');
-        } else {
-          pressedKeys.push('CTRL');
-        }
+        appendKeyForOs(pressedKeys, 'CTRL', 'CONTROL');
       }
       if (e.shiftKey) {
         pressedKeys.push('SHIFT');
       }
       if (e.altKey) {
-        if (isMac) {
-          pressedKeys.push('OPTION');
-        } else {
-          pressedKeys.push('ALT');
-        }
+        appendKeyForOs(pressedKeys, 'ALT', 'OPTION');
       }
 
       pressedKeys.push(e.key.toUpperCase());
