@@ -92,7 +92,7 @@
     "karma-json-fixtures-preprocessor": "0.0.6",
     "karma-verbose-reporter": "^0.0.6",
     "postcss": "^7.0.35",
-    "recursive-readdir": "^2.2.2",
+    "recursive-readdir": "^2.2.3",
     "rimraf": "^3.0.2",
     "rollup": "^2.52.3",
     "rollup-plugin-vue": "^6.0.0",
